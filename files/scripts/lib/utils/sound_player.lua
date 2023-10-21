@@ -75,7 +75,7 @@ SoundPlayer = {
       return false
     end
 
-    for _, child_entity_id in ipairs(EntityGetAllChildren(parent_entity_id)) do
+    for _, child_entity_id in ipairs(EntityGetAllChildren(parent_entity_id) or {}) do
       if EntityGetName(child_entity_id) == sound_player_name then
         EntityKill(child_entity_id)
       end
@@ -132,8 +132,6 @@ SoundPlayer = {
       end
     end
 
-    self:_printPlaylist(force_entity_ids)
-
     -- 最終のforceSoundのみ残す
     if #force_entity_ids > 1 then
       for i, sound_entity_id in ipairs(force_entity_ids) do
@@ -187,7 +185,7 @@ SoundPlayer = {
     addNewInternalVariable(sound_entity_id, self.IS_LOADED_VARIABLE_NAME, "value_bool", true)
   end,
 
-  _printPlaylist = function(self, playlist)
+  _debug_printPlaylist = function(self, playlist)
     for i, sound_entity_id in ipairs(playlist) do
       p(EntityGetName(sound_entity_id))
     end

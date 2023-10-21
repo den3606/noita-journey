@@ -5,14 +5,14 @@ WaitFrame = {
   },
 
   removeRegister = function(self, entity_id, variable_name)
-    setInternalVariableValue(entity_id, variable_name .. self.SUFFIXES["wait_frame"], "value_int", 0)
-    setInternalVariableValue(entity_id, variable_name .. self.SUFFIXES["register_frame"], "value_int", 0)
+    RemoveInternalVariableValue(entity_id, variable_name .. self.SUFFIXES["wait_frame"], "value_int")
+    RemoveInternalVariableValue(entity_id, variable_name .. self.SUFFIXES["register_frame"], "value_int")
   end,
 
   canCall = function(self, entity_id, variable_name)
     local current_frame = GameGetFrameNum()
-    local wait_frame = getInternalVariableValue(entity_id, variable_name .. self.SUFFIXES["wait_frame"], "value_int")
-    local register_frame = getInternalVariableValue(entity_id, variable_name .. self.SUFFIXES["register_frame"], "value_int")
+    local wait_frame = GetInternalVariableValue(entity_id, variable_name .. self.SUFFIXES["wait_frame"], "value_int")
+    local register_frame = GetInternalVariableValue(entity_id, variable_name .. self.SUFFIXES["register_frame"], "value_int")
 
     if wait_frame == nil or wait_frame == 0 or register_frame == nil or register_frame == 0 then
       return false
@@ -23,25 +23,25 @@ WaitFrame = {
 
   addWaitFrame = function(self, entity_id, variable_name, wait_frame)
     local current_frame = GameGetFrameNum()
-    local register_frame = getInternalVariableValue(entity_id, variable_name .. self.SUFFIXES["register_frame"], "value_int")
+    local register_frame = GetInternalVariableValue(entity_id, variable_name .. self.SUFFIXES["register_frame"], "value_int")
 
     if register_frame == nil or register_frame == 0 then
       -- 未登録
       register_frame = current_frame
-      addNewInternalVariable(entity_id, variable_name .. self.SUFFIXES["wait_frame"], "value_int", wait_frame)
-      addNewInternalVariable(entity_id, variable_name .. self.SUFFIXES["register_frame"], "value_int", register_frame)
+      AddNewInternalVariable(entity_id, variable_name .. self.SUFFIXES["wait_frame"], "value_int", wait_frame)
+      AddNewInternalVariable(entity_id, variable_name .. self.SUFFIXES["register_frame"], "value_int", register_frame)
     end
   end,
 
   updateWaitFrame = function(self, entity_id, variable_name, wait_frame)
     local current_frame = GameGetFrameNum()
     local register_frame = current_frame
-    addNewInternalVariable(entity_id, variable_name .. self.SUFFIXES["wait_frame"], "value_int", wait_frame)
-    addNewInternalVariable(entity_id, variable_name .. self.SUFFIXES["register_frame"], "value_int", register_frame)
+    SetInternalVariableValue(entity_id, variable_name .. self.SUFFIXES["wait_frame"], "value_int", wait_frame)
+    SetInternalVariableValue(entity_id, variable_name .. self.SUFFIXES["register_frame"], "value_int", register_frame)
   end,
 
   registered = function(self, entity_id, variable_name)
-    local register_frame = getInternalVariableValue(entity_id, variable_name .. self.SUFFIXES["register_frame"], "value_int")
+    local register_frame = GetInternalVariableValue(entity_id, variable_name .. self.SUFFIXES["register_frame"], "value_int")
     return not (register_frame == nil or register_frame == 0)
   end,
 

@@ -4,7 +4,7 @@
     extend="extend_path"
   }
 --]]
-function extend_xml(xml_table)
+function Extend_xml(xml_table)
   for _, content_filename in ipairs(xml_table) do
     local content = ModTextFileGetContent(content_filename["base"])
     local xml = nxml.parse(content)

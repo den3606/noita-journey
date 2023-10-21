@@ -1,0 +1,71 @@
+{
+  "user": {
+    "userName": "Den",
+    "userId": "xxxxx",
+    "playedGameIds(subCollection)": [
+      { "id": "UUID", "seed": "132132131", "timeStamp": "YYYY-MM-DDTHH-MM-DD" },
+      { "id": "UUID", "seed": "132132131", "timeStamp": "YYYY-MM-DDTHH-MM-DD" }
+    ]
+  },
+  "boughtItems": [
+    {
+      "GameId": "UUID(DocumentId)",
+      "boughtBy": "user.uid",
+      "itemType": "Spell, Wand, Reroll, Perk",
+      "name": "SpellName, wandLevel, Reroll, PerkName",
+      "location": {
+        "x": "0.00",
+        "y": "0.00",
+        "biome": "biomeName",
+        "storeType": "1st,7th,heaven, hell, biomeName"
+      },
+      "heldWallet": 1000,
+      "timeStamp": "UNIX TIME?"
+    }
+  ],
+  "locationHistories": [
+    {
+      "gameId": "UUID(DocumentId)",
+      "locations(subCollection)": [
+        {
+          "location": {
+            "x": "0.00",
+            "y": "0.00",
+            "timeStamp": "UNIX TIME?"
+          }
+        },
+        {
+          "location": {
+            "x": "0.00",
+            "y": "0.00",
+            "timeStamp": "UNIX TIME?"
+          }
+        }
+      ]
+    }
+  ],
+  "sessionEndStatuses": [
+    {
+      "gameId": "UUID(DocumentId)",
+      "location": {
+        "x": "0.00",
+        "y": "0.00",
+        "biome": "biomeName"
+      },
+      "playerStatus": {
+        "hp": 100,
+        "wallet": 1000,
+        "spells": ["lightBullet", "lightBullet"],
+        "wands": [
+          {
+            "level": 6,
+            "spells": ["lightBullet"]
+          }
+        ],
+        "perks": ["perkName"],
+        "isCleared": true
+      },
+      "timestamp": "UNIX TIME?"
+    }
+  ]
+}

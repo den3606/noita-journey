@@ -2,6 +2,7 @@ local base = 'mods/noita-journey/journey-logs/'
 
 return {
   USER = base .. 'user/',
+  PLAYED_GAMES = base .. 'played-games/',
   BOUGHT_ITEMS = base .. 'bought-items/',
   LOCATION_HISTORIES = base .. 'location-histories/',
   SESSION_START_STATUS = base .. 'session-start-status/',

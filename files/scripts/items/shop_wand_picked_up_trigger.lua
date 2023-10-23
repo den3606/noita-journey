@@ -17,6 +17,8 @@ function item_pickup(entity_item, entity_who_picked, name)
   local wallet = ComponentGetValue2(wallet_comp_id, 'money')
   local x, y = EntityGetTransform(entity_item)
 
+  local item_cost_component = EntityGetFirstComponentIncludingDisabled(entity_item, 'ItemCostComponent')
+
   local bought_item = {
     game_id = GlobalsGetValue(GLOBALS.GAME_ID),
     bought_by = GlobalsGetValue(GLOBALS.USER_ID),
@@ -27,6 +29,7 @@ function item_pickup(entity_item, entity_who_picked, name)
       y = y,
       biome = GetInternalVariableValue(entity_item, 'biome', 'value_string'),
     },
+    price = ComponentGetValue2(item_cost_component, 'cost'),
     store_type = GetInternalVariableValue(entity_item, 'biome', 'value_string'),
     held_wallet = wallet,
     datetime = GameGetISO8601DateUTC(),

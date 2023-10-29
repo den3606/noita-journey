@@ -20,7 +20,15 @@ end
 
 function GameGetISO8601DateUTC()
   local year, month, day, hour, minute, second = GameGetDateAndTimeUTC()
-  local datetime_iso8601 = year .. '-' .. month .. '-' .. day .. 'T' .. hour .. ':' .. minute .. ':' .. second .. 'Z'
+  local function zeroPadding(text)
+    local text = tostring(text)
+    if #text == 1 then
+      return '0' .. text
+    end
+    return text
+  end
+
+  local datetime_iso8601 = year .. '-' .. zeroPadding(month) .. '-' .. zeroPadding(day) .. 'T' .. zeroPadding(hour) .. ':' .. zeroPadding(minute) .. ':' .. zeroPadding(second) .. 'Z'
   return datetime_iso8601
 end
 
